@@ -1,0 +1,32 @@
+
+.list__container{
+    display: flex;
+    flex-direction: column;
+    border-right: 2px gray !important;
+    padding:25px ;
+
+}
+
+.list__places{
+    height : 75vh ;
+   
+}
+
+
+.list__container >h4{
+    margin-left : 10px ;
+
+}
+.list__formControl{
+    margin-bottom: 20px !important;
+}
+
+
+
+.list__grid{
+    overflow : auto ;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
