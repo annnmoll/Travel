@@ -16,13 +16,24 @@ const Header = ({setCoordinates}) => {
   }
   return (
     <div className = 'header__container'>
-     <AppBar position="static"  sx = {{bgcolor :'#c14ac1' , marginBottom : '10px'}}enableColorOnDark>
+     <AppBar position="static"  color="primary" sx = {{ marginBottom : '10px'}}enableColorOnDark>
         <Toolbar>
           <img className=  'header__logo'  src ={Logo}/>
-        <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 , display :{xs : 'none' , sm :'block'} }}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 , display :{ xs :'block'} }}>
         EasoVenture-Make your adventure easy
           </Typography>
-                
+                 <Autocomplete onLoad={onLoad}onPlaceChanged={onPlaceChanged}> 
+                  <div className='header__search'>
+                    <div className='header__searchIcon'>
+                        <SearchIcon/>
+
+                    </div>
+                    <input className='header__input' type='text' placeholder='Search.' />
+                    {/**classes take object as an input theerefore we use  double curly braces */}
+
+                </div>
+             </Autocomplete> 
+
                 
               
         </Toolbar>

@@ -11,6 +11,7 @@ const List = ({places ,childClicked , isLoading ,type ,setType , rating , setRat
 
    const [elementRefs ,setElementRefs] =useState([]) ;
    useEffect(()=>{
+    console.log( 'childClicked  ', childClicked) ;
     const refs = Array(places?.length).fill().map((_,i )=> elementRefs[i] || createRef()) ;
     setElementRefs(refs) ; 
     }
@@ -51,7 +52,7 @@ const List = ({places ,childClicked , isLoading ,type ,setType , rating , setRat
      <Grid container spacing = {1} className = 'List__places'>
        {places?.map((place , i ) =>(
         <Grid item key ={i} xs= {12}>
-          <PlaceDetails selected ={Number(childClicked === i )}
+          <PlaceDetails selected ={Number(childClicked) == i }
            refProp = {elementRefs[i]}place ={place}/>
         </Grid>
       

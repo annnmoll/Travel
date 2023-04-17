@@ -29,54 +29,25 @@ useEffect(()=>{
 
 
 useEffect(()=>{
-  const filteredPlaces = places?.filter((place)=> place.rating > rating)
+  const filteredPlaces = places ?.filter((place)=> place.rating > rating)
   setFilteredPlaces(filteredPlaces) ;
 } , [rating]) ;              
   useEffect(()=>{    
-     if(bounds.sw && bounds.ne){
+     if(bounds.sw || bounds.ne){
       setIsLoading(true) ; 
     getPlacesData(type , bounds?.sw , bounds?.ne).then((data)=>{
-      setPlaces(data) ;
+      setPlaces(data?.filter((place)=> place.name && place.num_reviews >0 )) ;
       setFilteredPlaces([])
       setIsLoading(false) ; 
-      console.log('data',data);
+      
     })  }
   } , [type  , bounds]) ; 
   return (
     <div>
-    <Header setCoorddinates = {setCoordinates}/>
-     {
-      !isDesktop ?(<div>   <Grid   container spacing ={2} style = {{overflow : 'auto'}} >
-             <Grid item xs={12} sm={8}>
-       <Map  setCoordinates = {setCoordinates} 
-              setBounds = {setBounds}
-              coordinates = {coordinates}
-              places={filteredPlaces.length ? filteredPlaces  : places}
-              setChildClicked = {setChildClicked}
-              />{/**on the  right most corner displayed the map */}
-
-   
-   </Grid>
-
-      <Grid  item xs={12} sm={4} > 
-        <List
-              places={filteredPlaces.length ? filteredPlaces : places} 
-              childClicked={childClicked}
-               isLoading = {isLoading} 
-             type = {type}     
-             setType = {setType}
-             rating = {rating}
-             setRating = {setRating}
-          
-         /> 
-
-       
-     </Grid>
+    <Header setCoordinates = {setCoordinates}/>
      
-
-   </Grid>      
-</div>) 
-      :(<div> 
+     
+      
            <Grid   container spacing ={2} style = {{overflow : 'auto'}} >
          <Grid  item xs={12} sm={4} > 
            <List
@@ -106,8 +77,8 @@ useEffect(()=>{
       </Grid>
       </Grid>      
    
-      </div>)
-     }      
+      
+           
     </div>
   )
 }
