@@ -5,9 +5,9 @@ import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined'
 import Rating from '@mui/lab/Rating'
 import useStyles from './MapStyles'
 
-const Map = ({setCoordinates , setBounds , coordinates ,places , setChildClicked}) => {
+const Map = ({setCoordinates , setBounds , coordinates ,places }) => {
   const classes=useStyles();
-  const isDesktop=useMediaQuery('(min-width:600px)')     
+  const isDesktop =useMediaQuery('(min-width:600px)')  ;   
  
   
 
@@ -24,7 +24,7 @@ const Map = ({setCoordinates , setBounds , coordinates ,places , setChildClicked
                            setCoordinates({lat : e.center.lat , lng : e.center.lng}) ;
                            setBounds({ne :e.marginBounds.ne , sw: e.marginBounds.sw }) ; 
                           }} 
-          onChildClick={(child)=>setChildClicked(child)} 
+          
         >
           {   places?.map((place , i )=>(
               <div className={classes.markerContainer}

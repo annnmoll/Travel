@@ -43,3 +43,19 @@ min-width: 100px;
   margin : 7px;
   border-radius: 100%;
 }
+
+.header__right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 40px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.header__right > h4{
+  margin-top: -2px;
+  font-weight: 400;
+}

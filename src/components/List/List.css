@@ -12,13 +12,9 @@
    
 }
 
-
-.list__container >h4{
-    margin-left : 10px ;
-
-}
 .list__formControl{
     margin-bottom: 20px !important;
+    display: block;
 }
 
 
