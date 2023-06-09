@@ -4,21 +4,12 @@ import { AppBar,Toolbar,Typography} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import Logo from './Logo.jpeg'
 import './Header.css' ; 
-import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { auth } from '../../firebase';
 import { logout ,selectUser } from '../../features/userSlice';
-import {Avatar} from '@mui/material';
-
+import { useNavigate } from 'react-router-dom';
 const Header = ({setCoordinates}) => {
-  const dispatch = useDispatch() ;
-  const user = useSelector(selectUser) ;
-  const signOut = ( ) =>{
-
-   auth.signOut( ).then(
-                          dispatch(logout())   )
- }
-  
+  const user = useSelector(selectUser) ; 
+  const navigate = useNavigate() ; 
   const [autocomplete , setAutocomplete] = useState(null) ; //autocompletes when we search for a location
   
   const onLoad = (autoC)=> setAutocomplete(autoC) ;
@@ -32,7 +23,7 @@ const Header = ({setCoordinates}) => {
 
   return (
     <div className = 'header__container'>
-      <AppBar position="static" color="primary" sx={{marginBottom:'10px' , backgroundColor : '#9a92b1'}}>   
+      <AppBar position="static" color="primary" sx={{marginBottom:'10px' , backgroundColor : 'cadetblue'}}>   
         <Toolbar>
           <img className=  'header__logo'  src ={Logo}/>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 , display :{ xs :'none' , md : 'block  '} }}>
@@ -42,16 +33,15 @@ const Header = ({setCoordinates}) => {
           <Autocomplete onLoad={onLoad}onPlaceChanged={onPlaceChanged}> 
             <div className='header__search'>
               <div className='header__searchIcon'>
-
                 <SearchIcon/>
               </div>
                 <input className='header__input' type='text' placeholder='Search.' />
               </div>
             
           </Autocomplete> 
-          <div className='header__right'>
+          <div className='header__right' onClick = {()=> navigate('/profile')}>
                 
-                <Avatar src = {user?.photoUrl} alt = {user?.displayName } onClick = {signOut} />
+                <img src = {'https://i.pinimg.com/originals/b6/77/cd/b677cd1cde292f261166533d6fe75872.png'} alt='User' />
                 <h4>{user?.displayName}</h4>
           </div>
         </Toolbar>

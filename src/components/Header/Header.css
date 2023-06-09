@@ -50,11 +50,17 @@ min-width: 100px;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-left: 40px;
+  margin-left: 20px;
   margin-top: 10px;
   cursor: pointer;
+  position: relative ;
+  right: 3px ;
 }
 
+.header__right > img {
+  height: 50px;
+  border-radius: 10px;
+}
 .header__right > h4{
   margin-top: -2px;
   font-weight: 400;

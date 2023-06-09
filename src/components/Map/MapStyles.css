@@ -1,0 +1,32 @@
+
+    .paper{
+        padding:10px ;
+        display:flex ;
+        flex-direction:column ;
+        justify-content:center ; 
+        width:90px ; 
+    }
+    .mapContainer{
+        height:80vh ;
+        width:100% ;
+        box-shadow : 10px 5px 5px rgba(0,0,0,0.85) ;        
+       
+
+    }
+    .markerContainer{
+        position:absolute;
+        transform:translate(-50%,-50%);
+        z-index:1;
+        
+    }
+
+    .markerContainer:hoover{
+        z-index: 2;
+    }
+    .pointer{
+        cursor:pointer;
+    }
+
+
+
+
